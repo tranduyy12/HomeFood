@@ -2,6 +2,7 @@ import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:homefood/Screen/gio_hang.dart';
 import 'package:homefood/widgets/Big_text.dart';
+import 'package:homefood/widgets/menuleft.dart';
 
 class HomeAppbar extends StatelessWidget {
   const HomeAppbar({super.key});
@@ -14,7 +15,12 @@ class HomeAppbar extends StatelessWidget {
       child: Row(
         children: [
           // icon menu left
-          Icon(Icons.sort, size: 30, color: Colors.red),
+          IconButton(
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+            icon: Icon(Icons.sort, size: 30, color: Colors.red),
+          ),
 
           // tiêu de shop
           Padding(
