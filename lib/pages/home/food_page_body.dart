@@ -42,9 +42,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // phần banner trượt
         Container(
           // color: Colors.redAccent,
-          height: 320,
+          height: Dimensions.pageView,
           child: PageView.builder(
             controller: pageController,
             itemCount: 5,
@@ -53,6 +54,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             },
           ),
         ),
+        //dots
         new DotsIndicator(
           dotsCount: 5,
           position: _currPageValue,
@@ -64,6 +66,116 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               borderRadius: BorderRadius.circular(5.0),
             ),
           ),
+        ),
+
+        //tên mục
+        SizedBox(height: Dimensions.height30),
+        Container(
+          margin: EdgeInsets.only(left: Dimensions.width30),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              BigText(text: 'Phổ biến'),
+              SizedBox(width: Dimensions.width10),
+              Container(
+                margin: EdgeInsets.only(bottom: 3),
+                child: BigText(text: '.', color: Colors.black26),
+              ),
+              SizedBox(width: Dimensions.width10),
+              Container(
+                margin: EdgeInsets.only(bottom: 2),
+                child: SmallText(text: 'Food pairing'),
+              ),
+            ],
+          ),
+        ), // tên mục
+        // tên và danh sách món
+        ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return Container(
+              margin: EdgeInsets.only(
+                left: Dimensions.width20,
+                right: Dimensions.width20,
+                bottom: Dimensions.height10,
+              ),
+              child: Row(
+                children: [
+                  //images
+                  Container(
+                    height: Dimensions.listViewImgSize,
+                    width: Dimensions.listViewImgSize,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(Dimensions.radius20),
+                      color: Colors.red,
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage("assets/images/food0.png"),
+                      ),
+                    ),
+                  ),
+                  //images
+
+                  //text
+                  Expanded(
+                    child: Container(
+                      height: Dimensions.listViewTextContSize,
+
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(Dimensions.radius20),
+                          bottomRight: Radius.circular(Dimensions.radius20),
+                        ),
+                        color: Colors.white,
+                      ),
+
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          left: Dimensions.width10,
+                          right: Dimensions.width10,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            BigText(text: 'Món ăn kết hợp đến từ trung quốc'),
+                            SizedBox(height: Dimensions.height10),
+                            SmallText(text: "Với đặc trưng từ trung quốc"),
+                            SizedBox(height: Dimensions.height10),
+                            Row(
+                              children: [
+                                //icon1
+                                IconAndTextWidget(
+                                  icon: Icons.circle_notifications_sharp,
+                                  text: "binh thuong",
+                                  iconColor: AppColors.iconColor1,
+                                ),
+                                //icon2
+                                IconAndTextWidget(
+                                  icon: Icons.location_on,
+                                  text: "1,7km",
+                                  iconColor: AppColors.mainColor,
+                                ),
+                                //icon3
+                                IconAndTextWidget(
+                                  icon: Icons.access_time,
+                                  text: "32min ",
+                                  iconColor: AppColors.iconColor2,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  //text
+                ],
+              ),
+            );
+          },
         ),
       ],
     );
@@ -89,9 +201,12 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           //banner
           Container(
             height: Dimensions.pageViewContainer,
-            margin: EdgeInsets.only(left: 10, right: 10),
+            margin: EdgeInsets.only(
+              left: Dimensions.width10,
+              right: Dimensions.width10,
+            ),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(Dimensions.radius30),
               color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
               image: DecorationImage(
                 image: AssetImage('assets/images/food0.png'),
@@ -107,19 +222,27 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             alignment: Alignment.bottomCenter,
             child: Container(
               height: Dimensions.pageViewTextContainer,
-              margin: EdgeInsets.only(left: 30, right: 30, bottom: 30),
+              margin: EdgeInsets.only(
+                left: Dimensions.width30,
+                right: Dimensions.width30,
+                bottom: Dimensions.width30,
+              ),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(Dimensions.radius20),
                 color: Colors.white,
               ),
               child: Container(
-                padding: EdgeInsets.only(top: 15, left: 15, right: 15),
+                padding: EdgeInsets.only(
+                  top: Dimensions.height15,
+                  left: 15,
+                  right: 15,
+                ),
                 //name
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     BigText(text: 'Banh kem'),
-                    SizedBox(height: 10),
+                    SizedBox(height: Dimensions.height10),
                     //name
 
                     //comments, rate
@@ -138,7 +261,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                         ),
                         SizedBox(width: 10),
                         SmallText(text: '5'),
-                        SizedBox(width: 10),
+                        // SizedBox(width: 10),
                         SmallText(text: '128 binh luan'),
                       ],
                     ),
@@ -146,7 +269,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     //comments, rate
 
                     //icon vi tri
-                    SizedBox(height: 20),
+                    SizedBox(height: Dimensions.height20),
                     Row(
                       children: [
                         //icon1

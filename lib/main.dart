@@ -4,6 +4,7 @@ import 'package:homefood/Screen/dang_ki.dart';
 import 'package:homefood/Screen/dang_nhap.dart';
 import 'package:homefood/Screen/home_food.dart';
 import 'package:homefood/Screen/main_food_page.dart';
+import 'package:homefood/home/food_page_body.dart';
 
 void main() {
   runApp(

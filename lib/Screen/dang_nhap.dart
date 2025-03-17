@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:homefood/Screen/dang_ki.dart';
 import 'package:homefood/Screen/home_food.dart';
+import 'package:homefood/home/main_food_page.dart';
 
 class DangNhap extends StatelessWidget {
   const DangNhap({super.key});
@@ -84,7 +85,7 @@ class DangNhap extends StatelessWidget {
                     // chuyển hướng sang man home
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => HomeFood()),
+                      MaterialPageRoute(builder: (context) => MainFoodPage()),
                     );
                   },
                   child: Container(
