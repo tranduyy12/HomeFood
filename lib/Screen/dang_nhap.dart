@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:homefood/Screen/dang_ki.dart';
 import 'package:homefood/Screen/home_food.dart';
-import 'package:homefood/home/main_food_page.dart';
+import 'package:homefood/pages/home/main_food_page.dart';
 
 class DangNhap extends StatelessWidget {
   const DangNhap({super.key});

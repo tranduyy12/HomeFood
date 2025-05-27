@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:homefood/home/food_page_body.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:homefood/controller/food_detail_cotroller.dart';
+import 'package:homefood/controller/recommended_product_controller.dart';
+import 'package:homefood/pages/home/food_page_body.dart';
 import 'package:homefood/utils/colors.dart';
 import 'package:homefood/utils/dimensions.dart';
 import 'package:homefood/widgets/Big_text.dart';
@@ -13,10 +17,16 @@ class MainFoodPage extends StatefulWidget {
 }
 
 class _MainFoodPageState extends State<MainFoodPage> {
+  Future<void> _loadResources() async {
+    await Get.find<FoodDetailController>().getFoodDetailList();
+    await Get.find<RecommendedProductController>().getRecommendedProductList();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    return RefreshIndicator(
+      onRefresh: _loadResources,
+      child: Column(
         children: [
           // APP Bar
           Container(
